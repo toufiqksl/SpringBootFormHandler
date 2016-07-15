@@ -1,17 +1,18 @@
+# SpringBootFormHandler
 Handling Form Submission
 
 URL : https://spring.io/guides/gs/handling-form-submission/
 
 This guide walks you through the process of using Spring to create and submit a web form.
 
-What you’ll build
+What youâ€™ll build
 
 In this guide, you will build a web form which will be accessible at the following URL:
 
 http://localhost:8080/greeting
 Viewing this page in a browser will display the form. You can submit a greeting by populating the id and content form fields. A results page will be displayed when the form is submitted.
 
-What you’ll need
+What youâ€™ll need
 
 About 15 minutes
 A favorite text editor or IDE
@@ -26,7 +27,7 @@ To start from scratch, move on to Build with Gradle.
 
 Create a web controller
 
-In Spring’s approach to building web sites, HTTP requests are handled by a controller. These components are easily identified by the @Controller annotation. The GreetingController below handles GET requests for /greeting by returning the name of a View, in this case, "greeting". A View is responsible for rendering the HTML content:
+In Springâ€™s approach to building web sites, HTTP requests are handled by a controller. These components are easily identified by the @Controller annotation. The GreetingController below handles GET requests for /greeting by returning the name of a View, in this case, "greeting". A View is responsible for rendering the HTML content:
 
 src/main/java/hello/GreetingController.java
 
@@ -55,7 +56,7 @@ public class GreetingController {
     }
 
 }
-This controller is concise and simple, but a lot is going on. Let’s analyze it step by step.
+This controller is concise and simple, but a lot is going on. Letâ€™s analyze it step by step.
 
 The @RequestMapping annotation allows you to map HTTP requests to specific controller methods. The two methods in this controller are both mapped to /greeting. By default @RequestMapping maps all HTTP operations, such as GET, POST, and so forth. But in this case the greetingForm() method is specifically mapped to GET using @RequestMapping(method=GET), while greetingSubmit() is mapped to POST with @RequestMapping(method=POST). This mapping allows the controller to differentiate the requests to the /greeting endpoint.
 
@@ -108,7 +109,7 @@ src/main/resources/templates/greeting.html
 </html>
 The th:action="@{/greeting}" expression directs the form to POST to the /greeting endpoint, while the th:object="${greeting}" expression declares the model object to use for collecting the form data. The two form fields, expressed with th:field="{id}" and th:field="{content}", correspond to the fields in the Greeting object above.
 
-That covers the controller, model, and view for presenting the form. Now let’s review the process of submitting the form. As noted above, the form submits to the /greeting endpoint using a POST. The greetingSubmit() method receives the Greeting object that was populated by the form. It then adds that populated object to the model so the submitted data can be rendered in the result view, seen below. The id is rendered in the <p th:text="'id: ' + ${greeting.id}" /> expression. Likewise the content is rendered in the <p th:text="'content: ' + ${greeting.content}" /> expression.
+That covers the controller, model, and view for presenting the form. Now letâ€™s review the process of submitting the form. As noted above, the form submits to the /greeting endpoint using a POST. The greetingSubmit() method receives the Greeting object that was populated by the form. It then adds that populated object to the model so the submitted data can be rendered in the result view, seen below. The id is rendered in the <p th:text="'id: ' + ${greeting.id}" /> expression. Likewise the content is rendered in the <p th:text="'content: ' + ${greeting.content}" /> expression.
 
 src/main/resources/templates/result.html
 
@@ -129,7 +130,7 @@ For clarity, this example utilizes two separate view templates for rendering the
 
 Make the application executable
 
-Although it is possible to package this service as a traditional WAR file for deployment to an external application server, the simpler approach demonstrated below creates a standalone application. You package everything in a single, executable JAR file, driven by a good old Java main() method. Along the way, you use Spring’s support for embedding the Tomcat servlet container as the HTTP runtime, instead of deploying to an external instance.
+Although it is possible to package this service as a traditional WAR file for deployment to an external application server, the simpler approach demonstrated below creates a standalone application. You package everything in a single, executable JAR file, driven by a good old Java main() method. Along the way, you use Springâ€™s support for embedding the Tomcat servlet container as the HTTP runtime, instead of deploying to an external instance.
 
 src/main/java/hello/Application.java
 
@@ -152,7 +153,7 @@ public class Application {
 @EnableAutoConfiguration tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
 Normally you would add @EnableWebMvc for a Spring MVC app, but Spring Boot adds it automatically when it sees spring-webmvc on the classpath. This flags the application as a web application and activates key behaviors such as setting up a DispatcherServlet.
 @ComponentScan tells Spring to look for other components, configurations, and services in the the hello package, allowing it to find the HelloController.
-The main() method uses Spring Boot’s SpringApplication.run() method to launch an application. Did you notice that there wasn’t a single line of XML? No web.xml file either. This web application is 100% pure Java and you didn’t have to deal with configuring any plumbing or infrastructure.
+The main() method uses Spring Bootâ€™s SpringApplication.run() method to launch an application. Did you notice that there wasnâ€™t a single line of XML? No web.xml file either. This web application is 100% pure Java and you didnâ€™t have to deal with configuring any plumbing or infrastructure.
 
 Build an executable JAR
 
